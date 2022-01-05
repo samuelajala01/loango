@@ -25,6 +25,16 @@ function calculateResults(){
   const principal = parseFloat(amount.value);
   const calculatedInterest = parseFloat(interest.value) / 100 / 12;
   const calculatedPayments = parseFloat(years.value) * 12;
+  const clearBtn = document.getElementById('clear-btn');
+
+// Clear button
+clearBtn.addEventListener('click',(e)=>{
+  amount.value='';
+  interest.value='';
+  years.value='';
+  document.getElementById('results').style.display = 'none';
+ e.preventDefault();
+})
 
   // Compute monthly payment
   const x = Math.pow(1 + calculatedInterest, calculatedPayments);
@@ -37,6 +47,7 @@ function calculateResults(){
 
     // Show results
     document.getElementById('results').style.display = 'block';
+    document.getElementById('clear-btn').style.display ='block'
 
     // Hide loader
     document.getElementById('loading').style.display = 'none';
